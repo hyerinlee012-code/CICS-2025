@@ -369,28 +369,6 @@ else
 end
 
 fprintf("RRT의 동적 맵 총 경로 길이 : %.2f m\n", totalDistance_rrt);
-% ----------------------------------------------------
-
-
-% %pathStates_curve = refpath_curve.States;   % [x y theta]
-% 
-% % 거리 계산 (x, y만 사용)
-% dx = diff(vehiclePos_hybrid(:,1));
-% dy = diff(vehiclePos_hybrid(:,2));
-% segmentDistances_dynamic = hypot(dx, dy);
-% totalDistance_dynamic = sum(segmentDistances_dynamic);
-% 
-% fprintf("Hybrid A*의 동적 맵 총 경로 길이 : %.2f m\n", totalDistance_curve);
-% 
-% %pathStates_RRT_curve = pathObj_curve.States;   % [x y theta]
-% 
-%  % 거리 계산 (x, y만 사용)
-%  disp (pathStates_rrt(:,2))
-%  dy_RRT_dynamic = diff(pathStates_rrt(:,2));
-%  segmentDistances_rrt_dynamic= hypot(dx_RRT_dynamic, dy_RRT_dynamic);
-%  totalDistance_RRT_dynamic = sum(segmentDistances_rrt_dynamic);
-% 
-% fprintf("RRT의 동적 맵 총 경로 길이 : %.2f m\n", totalDistance_RRT_dynamic); 
 
 %% ================================
 %  커브 맵 (S자 장애물 맵) 생성
@@ -447,7 +425,6 @@ end
 figure;
 show(map_curve);
 title('Curved Map');
-%axis equal;
 
 %% ================================
 % 2. Hybrid A* (차량 동역학 고려)
@@ -595,7 +572,6 @@ figure
 show(omap)
 hold on
 plot(refpath.States(:,1),refpath.States(:,2),'r-','LineWidth',2)
-%quiver(refpath.States(:,1),refpath.States(:,2),cos(refpath.States(:,3)),sin(refpath.States(:,3)))
 plot(startPose(1),startPose(2),'go','MarkerSize',10,'MarkerFaceColor','g')
 plot(goalPose(1),goalPose(2),'bo','MarkerSize',10,'MarkerFaceColor','b')
 title('Binary Occupancy Map without Obstacles')
@@ -607,7 +583,6 @@ figure
 show(omap_o)
 hold on
 plot(refpath_o.States(:,1),refpath_o.States(:,2),'r-','LineWidth',2)
-%quiver(refpath.States(:,1),refpath.States(:,2),cos(refpath.States(:,3)),sin(refpath.States(:,3)))
 plot(startPose(1),startPose(2),'go','MarkerSize',10,'MarkerFaceColor','g')
 plot(goalPose(1),goalPose(2),'bo','MarkerSize',10,'MarkerFaceColor','b')
 title('Binary Occupancy Map with Obstacles')
@@ -619,7 +594,6 @@ figure
 show(omap_curve)
 hold on
 plot(refpath_curve.States(:,1),refpath_curve.States(:,2),'r-','LineWidth',2)
-%quiver(refpath.States(:,1),refpath.States(:,2),cos(refpath.States(:,3)),sin(refpath.States(:,3)))
 plot(startPose_curve(1),startPose_curve(2),'go','MarkerSize',10,'MarkerFaceColor','g')
 plot(goalPose_curve(1),goalPose_curve(2),'bo','MarkerSize',10,'MarkerFaceColor','b')
 title('Curved Map')
